@@ -1,0 +1,65 @@
+/* add grid styles here */
+
+/* Set the .textimonial-grid element (main) to display grid,
+   and establish the grid-template-areas.
+   We are developing this page as "mobile-first" so the initial 
+   layout should be for a mobile screen. */
+.testimonial-grid {
+    display: grid;
+    gap: 1.5em;
+    grid-template-areas: /* Mobile layout - single column */
+        'one'
+        'two'
+        'three'
+        'four'
+        'five';
+}
+
+/* Assign each .testimonial (the article elements) to
+   one of the grid-areas established above */
+.testimonial:nth-child(1) {
+    grid-area: one;
+}
+.testimonial:nth-child(2) {
+    grid-area: two;
+}
+.testimonial:nth-child(3) {
+    grid-area: three;
+}
+.testimonial:nth-child(4) {
+    grid-area: four;
+}
+.testimonial:nth-child(5) {
+    grid-area: five;
+}
+
+/* Media Queries - In a mobile-first layout,
+   we use min-width instead of max-width,
+   and we go from smallest screen to largest screen */
+
+/* First Media Query - min-width 30em -
+   True if screen is wider than 30em -
+   Reconfigure grid-template-areas into
+   a 2-column layout for medium screens
+   (e.g. tablets, etc.) */
+@media (min-width: 30em) {
+    .testimonial-grid {
+        grid-template-areas: 
+       'one one'
+       'two five'
+       'three five'
+       'four four';
+    }
+}
+
+/* Second Media Query - min-width 50em -
+   True if screen is wider than 50em -
+   Reconfigure grid-template-areas into 
+   a 3-column layout for full-size screens */
+@media (min-width: 50em) {
+    .testimonial-grid {
+        grid-template-areas: 
+            'one one two five'
+            'three four four five';
+    }
+}
